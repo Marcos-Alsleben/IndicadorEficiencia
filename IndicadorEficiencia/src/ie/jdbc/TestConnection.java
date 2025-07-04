@@ -20,9 +20,9 @@ public class TestConnection {
         try {
 
             new ConnectionFactory().getConnection();
-            JOptionPane.showMessageDialog(null, "Conectado com sucesso ao Banco de Dados flexo!");
+            JOptionPane.showMessageDialog(null, "Conectado com sucesso ao Banco de Dados indicadoreficiencia!");
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao Banco de Dados flexo: " + erro);
+            JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao Banco de Dados indicadoreficiencia: " + erro);
         }
 
     }
