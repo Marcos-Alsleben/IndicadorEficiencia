@@ -50,7 +50,7 @@ public class main extends javax.swing.JFrame {
         card1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         card2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        gerenciarFuncionario1 = new ie.view.GerenciarFuncionario();
         card3 = new javax.swing.JPanel();
         gerenciarClientes1 = new ie.view.GerenciarClientes();
         card4 = new javax.swing.JPanel();
@@ -259,24 +259,21 @@ public class main extends javax.swing.JFrame {
 
         jP_cardLayout.add(card1, "card1");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel2.setText("Designers");
-
         javax.swing.GroupLayout card2Layout = new javax.swing.GroupLayout(card2);
         card2.setLayout(card2Layout);
         card2Layout.setHorizontalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(gerenciarFuncionario1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addContainerGap())
         );
         card2Layout.setVerticalGroup(
             card2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(card2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(gerenciarFuncionario1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jP_cardLayout.add(card2, "card2");
@@ -285,7 +282,7 @@ public class main extends javax.swing.JFrame {
         card3.setLayout(card3Layout);
         card3Layout.setHorizontalGroup(
             card3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(card3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, card3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(gerenciarClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
@@ -436,6 +433,7 @@ public class main extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
         gerenciarClientes1.listarClientes();
+        gerenciarFuncionario1.listarFuncionarios();
 
     }//GEN-LAST:event_formWindowActivated
 
@@ -468,8 +466,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel card3;
     private javax.swing.JPanel card4;
     private ie.view.GerenciarClientes gerenciarClientes1;
+    private ie.view.GerenciarFuncionario gerenciarFuncionario1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jP_cardLayout;
     private javax.swing.JPanel jPanel1;

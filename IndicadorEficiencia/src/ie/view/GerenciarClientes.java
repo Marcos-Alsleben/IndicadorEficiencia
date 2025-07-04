@@ -123,30 +123,58 @@ public class GerenciarClientes extends javax.swing.JPanel {
         });
 
         btn_novoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
+        btn_novoCliente.setEnabled(false);
         btn_novoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_novoClienteMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_novoClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_novoClienteMouseExited(evt);
+            }
         });
 
         btn_alterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/editar32_orig.png"))); // NOI18N
+        btn_alterarCliente.setEnabled(false);
         btn_alterarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_alterarClienteMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_alterarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_alterarClienteMouseExited(evt);
+            }
         });
 
         btn_excluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/excluir32_orig.png"))); // NOI18N
+        btn_excluirCliente.setEnabled(false);
         btn_excluirCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_excluirClienteMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_excluirClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_excluirClienteMouseExited(evt);
+            }
         });
 
         btn_limparCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/limpar32_orig.png"))); // NOI18N
+        btn_limparCliente.setEnabled(false);
         btn_limparCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_limparClienteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_limparClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_limparClienteMouseExited(evt);
             }
         });
 
@@ -238,94 +266,154 @@ public class GerenciarClientes extends javax.swing.JPanel {
     private void btn_novoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_novoClienteMouseClicked
 
 // Criar novo registro Cliente
-        Utilitarios dh = new Utilitarios();
-        String dataHora = dh.DH();
+        if (btn_novoCliente.isEnabled()) {
 
-        Cliente obj = new Cliente();
+            Utilitarios dh = new Utilitarios();
+            String dataHora = dh.DH();
 
-        obj.setNome(txt_nomeCliente.getText());
-        obj.setCriado(dataHora);
-        obj.setModificado(dataHora);
+            Cliente obj = new Cliente();
 
-        ClienteDAO dao = new ClienteDAO();
-        dao.CadastrarCliente(obj);
+            obj.setNome(txt_nomeCliente.getText());
+            obj.setCriado(dataHora);
+            obj.setModificado(dataHora);
 
-        txt_idCliente.setText("");
-        txt_nomeCliente.setText("");
+            ClienteDAO dao = new ClienteDAO();
+            dao.CadastrarCliente(obj);
 
-        btn_novoCliente.setEnabled(false);
-        btn_alterarCliente.setEnabled(false);
-        btn_excluirCliente.setEnabled(false);
-        btn_limparCliente.setEnabled(false);
+            txt_idCliente.setText("");
+            txt_nomeCliente.setText("");
 
-        listarClientes();
+            btn_novoCliente.setEnabled(false);
+            btn_alterarCliente.setEnabled(false);
+            btn_excluirCliente.setEnabled(false);
+            btn_limparCliente.setEnabled(false);
+
+            listarClientes();
+        }
 
     }//GEN-LAST:event_btn_novoClienteMouseClicked
 
     private void btn_alterarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_alterarClienteMouseClicked
 
         // Alterar novo registro Cliente
-        Utilitarios dh = new Utilitarios();
-        String dataHora = dh.DH();
+        if (btn_alterarCliente.isEnabled()) {
 
-        Cliente obj = new Cliente();
+            Utilitarios dh = new Utilitarios();
+            String dataHora = dh.DH();
 
-        obj.setNome(txt_nomeCliente.getText());
-        obj.setCriado(jT_cliente.getValueAt(jT_cliente.getSelectedRow(), 2).toString());
-        obj.setModificado(dataHora);
-        obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
+            Cliente obj = new Cliente();
 
-        ClienteDAO dao = new ClienteDAO();
-        dao.alterarCliente(obj);
+            obj.setNome(txt_nomeCliente.getText());
+            obj.setCriado(jT_cliente.getValueAt(jT_cliente.getSelectedRow(), 2).toString());
+            obj.setModificado(dataHora);
+            obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
 
-        txt_idCliente.setText("");
-        txt_nomeCliente.setText("");
+            ClienteDAO dao = new ClienteDAO();
+            dao.alterarCliente(obj);
 
-        btn_novoCliente.setEnabled(false);
-        btn_alterarCliente.setEnabled(false);
-        btn_excluirCliente.setEnabled(false);
-        btn_limparCliente.setEnabled(false);
+            txt_idCliente.setText("");
+            txt_nomeCliente.setText("");
 
-        listarClientes();
+            btn_novoCliente.setEnabled(false);
+            btn_alterarCliente.setEnabled(false);
+            btn_excluirCliente.setEnabled(false);
+            btn_limparCliente.setEnabled(false);
+
+            listarClientes();
+        }
 
     }//GEN-LAST:event_btn_alterarClienteMouseClicked
 
     private void btn_excluirClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_excluirClienteMouseClicked
 
 // botao Excluir Clientes
-        Cliente obj = new Cliente();
+        if (btn_excluirCliente.isEnabled()) {
 
-        obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
+            Cliente obj = new Cliente();
 
-        ClienteDAO dao = new ClienteDAO();
+            obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
 
-        dao.excluirCliente(obj);
+            ClienteDAO dao = new ClienteDAO();
 
-        //Limpa os paineis
-        txt_idCliente.setText("");
-        txt_nomeCliente.setText("");
+            dao.excluirCliente(obj);
 
-        //desabilita botões
-        btn_novoCliente.setEnabled(false);
-        btn_alterarCliente.setEnabled(false);
-        btn_excluirCliente.setEnabled(false);
-        btn_limparCliente.setEnabled(false);
+            //Limpa os paineis
+            txt_idCliente.setText("");
+            txt_nomeCliente.setText("");
 
-        listarClientes();
+            //desabilita botões
+            btn_novoCliente.setEnabled(false);
+            btn_alterarCliente.setEnabled(false);
+            btn_excluirCliente.setEnabled(false);
+            btn_limparCliente.setEnabled(false);
+
+            listarClientes();
+        }
 
     }//GEN-LAST:event_btn_excluirClienteMouseClicked
 
     private void btn_limparClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limparClienteMouseClicked
 
-        txt_idCliente.setText("");
-        txt_nomeCliente.setText("");
+        if (btn_limparCliente.isEnabled()) {
 
-        btn_novoCliente.setEnabled(false);
-        btn_alterarCliente.setEnabled(false);
-        btn_excluirCliente.setEnabled(false);
-        btn_limparCliente.setEnabled(false);
+            txt_idCliente.setText("");
+            txt_nomeCliente.setText("");
+
+            btn_novoCliente.setEnabled(false);
+            btn_alterarCliente.setEnabled(false);
+            btn_excluirCliente.setEnabled(false);
+            btn_limparCliente.setEnabled(false);
+        }
 
     }//GEN-LAST:event_btn_limparClienteMouseClicked
+
+    private void btn_novoClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_novoClienteMouseEntered
+
+        btn_novoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_sat.png")));
+
+    }//GEN-LAST:event_btn_novoClienteMouseEntered
+
+    private void btn_novoClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_novoClienteMouseExited
+
+        btn_novoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png")));
+
+    }//GEN-LAST:event_btn_novoClienteMouseExited
+
+    private void btn_alterarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_alterarClienteMouseEntered
+
+        btn_alterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/editar32_sat.png")));
+
+    }//GEN-LAST:event_btn_alterarClienteMouseEntered
+
+    private void btn_alterarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_alterarClienteMouseExited
+
+        btn_alterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/editar32_orig.png")));
+
+    }//GEN-LAST:event_btn_alterarClienteMouseExited
+
+    private void btn_excluirClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_excluirClienteMouseEntered
+
+        btn_excluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/excluir32_sat.png")));
+
+    }//GEN-LAST:event_btn_excluirClienteMouseEntered
+
+    private void btn_excluirClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_excluirClienteMouseExited
+
+        btn_excluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/excluir32_orig.png")));
+
+    }//GEN-LAST:event_btn_excluirClienteMouseExited
+
+    private void btn_limparClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limparClienteMouseEntered
+
+        btn_limparCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/limpar32_sat.png")));
+
+    }//GEN-LAST:event_btn_limparClienteMouseEntered
+
+    private void btn_limparClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limparClienteMouseExited
+
+        btn_limparCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/limpar32_orig.png")));
+
+    }//GEN-LAST:event_btn_limparClienteMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

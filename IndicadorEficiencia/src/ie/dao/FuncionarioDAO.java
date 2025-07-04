@@ -31,7 +31,7 @@ private Connection con;
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "insert into cliente (nome, criado, modificado) "
+            String sql = "insert into funcionario (nome, criado, modificado) "
                     + " values (?,?,?)";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
@@ -57,7 +57,7 @@ private Connection con;
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "update cliente set nome=?, criado=?, modificado=? where id=?";
+            String sql = "update funcionario set nome=?, criado=?, modificado=? where id_funcionario=?";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -85,7 +85,7 @@ private Connection con;
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "delete from cliente where id=?";
+            String sql = "delete from funcionario where id_funcionario=?";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -114,7 +114,7 @@ private Connection con;
             List<Funcionario> lista = new ArrayList<>();
 
             // Passo 2 criar o comando sql, organizar e executar
-            String sql = "select * from cliente";
+            String sql = "select * from funcionario";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
@@ -149,7 +149,7 @@ private Connection con;
             List<Funcionario> lista = new ArrayList<>();
             
             //Cria comando sql
-            String sql = "SELECT * FROM cliente where "
+            String sql = "SELECT * FROM funcionario where "
                     + "nome =? order by criado asc limit 1;";
             
             //Conecta ao banco de dados e organiza o comando sql

@@ -21,17 +21,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" pref="613" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="txt_idCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_idFuncionario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt_nomeCliente" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="txt_nomeFuncionario" min="-2" pref="275" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_novoCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_novoFuncionario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_alterarCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_alterarFuncionario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_excluirCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_excluirFuncionario" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_limparCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_limparFuncionario" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -44,13 +44,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="txt_idCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_idFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_nomeFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btn_novoCliente" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_alterarCliente" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_excluirCliente" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_limparCliente" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_novoFuncionario" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_alterarFuncionario" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_excluirFuncionario" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_limparFuncionario" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="354" max="32767" attributes="0"/>
@@ -67,7 +67,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jT_cliente">
+        <Component class="javax.swing.JTable" name="jT_funcionario">
           <Properties>
             <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
@@ -109,12 +109,12 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jT_clienteMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jT_funcionarioMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txt_nomeCliente">
+    <Component class="javax.swing.JTextField" name="txt_nomeFuncionario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="3f" green="3f" red="3f" type="rgb"/>
@@ -125,11 +125,11 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nomeClienteKeyPressed"/>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nomeClienteKeyTyped"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nomeFuncionarioKeyPressed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nomeFuncionarioKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txt_idCliente">
+    <Component class="javax.swing.JTextField" name="txt_idFuncionario">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="new java.awt.Color(255, 255, 255, 0)" type="code"/>
@@ -145,10 +145,10 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_idClienteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_idFuncionarioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="btn_novoCliente">
+    <Component class="javax.swing.JLabel" name="btn_novoFuncionario">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/adicionar32_orig.png"/>
@@ -156,12 +156,12 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoClienteMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoClienteMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoClienteMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoFuncionarioMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoFuncionarioMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_novoFuncionarioMouseExited"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="btn_alterarCliente">
+    <Component class="javax.swing.JLabel" name="btn_alterarFuncionario">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/editar32_orig.png"/>
@@ -169,12 +169,12 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarClienteMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarClienteMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarClienteMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarFuncionarioMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarFuncionarioMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_alterarFuncionarioMouseExited"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="btn_excluirCliente">
+    <Component class="javax.swing.JLabel" name="btn_excluirFuncionario">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/excluir32_orig.png"/>
@@ -182,12 +182,12 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirClienteMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirClienteMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirClienteMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirFuncionarioMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirFuncionarioMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_excluirFuncionarioMouseExited"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="btn_limparCliente">
+    <Component class="javax.swing.JLabel" name="btn_limparFuncionario">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/limpar32_orig.png"/>
@@ -195,9 +195,9 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparClienteMouseClicked"/>
-        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparClienteMouseEntered"/>
-        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparClienteMouseExited"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparFuncionarioMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparFuncionarioMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_limparFuncionarioMouseExited"/>
       </Events>
     </Component>
   </SubComponents>

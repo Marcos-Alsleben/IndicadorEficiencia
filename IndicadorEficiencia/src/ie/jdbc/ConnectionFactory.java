@@ -16,7 +16,8 @@ public class ConnectionFactory {
 
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/indicadoreficiencia?allowPublicKeyRetrieval=true&useSSL=false", "carton", "2574");
+            //return DriverManager.getConnection("jdbc:mysql://localhost:3306/indicadoreficiencia?allowPublicKeyRetrieval=true&useSSL=false", "carton", "2574");
+            return DriverManager.getConnection("jdbc:mysql://10.0.70.90:3306/indicadoreficiencia?allowPublicKeyRetrieval=true&useSSL=false", "carton", "2574");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar com banco de dados: " + erro.getMessage());
             System.exit(1); // Encerra o programa
