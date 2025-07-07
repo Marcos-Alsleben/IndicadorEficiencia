@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mrs_a
  */
-public class GerenciarFuncionario extends javax.swing.JPanel {
+public class GerenciarFuncionarios extends javax.swing.JPanel {
 
 //Metodo listar Funcionarios
     public void listarFuncionarios() {
@@ -33,7 +33,7 @@ public class GerenciarFuncionario extends javax.swing.JPanel {
         }
     }
 
-    public GerenciarFuncionario() {
+    public GerenciarFuncionarios() {
         initComponents();
     }
 
@@ -185,12 +185,12 @@ public class GerenciarFuncionario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_idFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addComponent(txt_nomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(btn_novoFuncionario)
                         .addGap(18, 18, 18)
                         .addComponent(btn_alterarFuncionario)

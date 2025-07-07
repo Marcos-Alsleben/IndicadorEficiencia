@@ -13,10 +13,12 @@ public class Indicador {
 // Atributos
     private int id_indicador;
     private int id_funcionario;
+    private String funcionario;
     private String pedido;
     private int qtd_artes;
     private String status;
     private int id_cliente;
+    private String cliente;
     private String data;
     private String criado;
     private String modificado;
@@ -37,6 +39,14 @@ public class Indicador {
 
     public void setId_funcionario(int id_funcionario) {
         this.id_funcionario = id_funcionario;
+    }
+
+    public String getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(String funcionario) {
+        this.funcionario = funcionario;
     }
 
     public String getPedido() {
@@ -71,6 +81,14 @@ public class Indicador {
         this.id_cliente = id_cliente;
     }
 
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
     public String getData() {
         return data;
     }
@@ -94,5 +112,7 @@ public class Indicador {
     public void setModificado(String modificado) {
         this.modificado = modificado;
     }
+
+    
 
 }

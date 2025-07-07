@@ -116,11 +116,6 @@ public class GerenciarClientes extends javax.swing.JPanel {
         txt_idCliente.setBorder(null);
         txt_idCliente.setEnabled(false);
         txt_idCliente.setFocusable(false);
-        txt_idCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idClienteActionPerformed(evt);
-            }
-        });
 
         btn_novoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
         btn_novoCliente.setEnabled(false);
@@ -185,12 +180,12 @@ public class GerenciarClientes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addComponent(txt_nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addComponent(btn_novoCliente)
                         .addGap(18, 18, 18)
                         .addComponent(btn_alterarCliente)
@@ -258,10 +253,6 @@ public class GerenciarClientes extends javax.swing.JPanel {
             evt.consume();
         }
     }//GEN-LAST:event_txt_nomeClienteKeyTyped
-
-    private void txt_idClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_idClienteActionPerformed
 
     private void btn_novoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_novoClienteMouseClicked
 
