@@ -21,8 +21,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="txt_idFuncionario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="txt_idFuncionario" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="txt_nomeFuncionario" min="-2" pref="275" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="btn_novoFuncionario" min="-2" max="-2" attributes="0"/>
@@ -42,15 +42,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="txt_idFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_nomeFuncionario" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btn_novoFuncionario" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_alterarFuncionario" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_excluirFuncionario" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_limparFuncionario" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="txt_idFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt_nomeFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_novoFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_alterarFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_excluirFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_limparFuncionario" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="354" max="32767" attributes="0"/>
@@ -116,13 +114,8 @@
     </Container>
     <Component class="javax.swing.JTextField" name="txt_nomeFuncionario">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="3f" green="3f" red="3f" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="toolTipText" type="java.lang.String" value="Pesquisa"/>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nomeFuncionarioKeyPressed"/>

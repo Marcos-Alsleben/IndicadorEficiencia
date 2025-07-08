@@ -4,15 +4,43 @@
  */
 package ie.view;
 
+import ie.dao.FuncionarioDAO;
+import ie.dao.IndicadorDAO;
+import ie.model.Funcionario;
+import ie.model.Indicador;
+import java.awt.Frame;
+import java.util.List;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mrs_a
  */
 public class GerenciarRegistros extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GerenciarRegistros
-     */
+//Metodo listar Registros
+    public void listarRegistros() {
+        IndicadorDAO dao = new IndicadorDAO();
+        List<Indicador> lista = dao.ListarIndicador();
+        DefaultTableModel dados = (DefaultTableModel) jT_registros.getModel();
+        dados.setNumRows(0);
+        for (Indicador c : lista) {
+            dados.addRow(new Object[]{
+                c.getId_indicador(),
+                c.getId_funcionario(),
+                c.getFuncionario(),
+                c.getPedido(),
+                c.getQtd_artes(),
+                c.getStatus(),
+                c.getId_cliente(),
+                c.getCliente(),
+                c.getData(),
+                c.getCriado(),
+                c.getModificado()});
+        }
+    }
+
     public GerenciarRegistros() {
         initComponents();
     }
@@ -43,13 +71,34 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             new String [] {
                 "idIndicador", "idDesigner", "Designer", "Pedido", "NºArtes", "Status", "idCliente", "Cliente", "Data", "Criado", "Modificado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jT_registros.setToolTipText("Duplo Clicke para Alterar Registro");
         jScrollPane1.setViewportView(jT_registros);
 
         txt_pesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_pesquisa.setToolTipText("Pesquisa");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
+        jLabel1.setToolTipText("Adicionar Registro");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
             }
@@ -59,6 +108,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/pdf32_orig.png"))); // NOI18N
+        jLabel2.setToolTipText("Gerar PDF");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
@@ -76,7 +126,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 100, Short.MAX_VALUE)
+                        .addGap(100, 100, 100)
                         .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -89,10 +139,10 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_pesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
@@ -122,6 +172,15 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/pdf32_orig.png")));
 
     }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+        Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
+        NovoRegistro dialog = new NovoRegistro(parent, true);
+        dialog.setVisible(true);
+
+
+    }//GEN-LAST:event_jLabel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

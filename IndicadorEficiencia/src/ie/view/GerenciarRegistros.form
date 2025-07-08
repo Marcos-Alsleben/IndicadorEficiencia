@@ -20,7 +20,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       <Component id="txt_pesquisa" min="-2" pref="285" max="-2" attributes="0"/>
                       <EmptySpace pref="126" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -37,10 +37,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt_pesquisa" alignment="1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="txt_pesquisa" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="354" max="32767" attributes="0"/>
@@ -62,19 +62,20 @@
             <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="11" rowCount="4">
-                <Column editable="true" title="idIndicador" type="java.lang.Object"/>
-                <Column editable="true" title="idDesigner" type="java.lang.Object"/>
-                <Column editable="true" title="Designer" type="java.lang.Object"/>
-                <Column editable="true" title="Pedido" type="java.lang.Object"/>
-                <Column editable="true" title="N&#xba;Artes" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
-                <Column editable="true" title="idCliente" type="java.lang.Object"/>
-                <Column editable="true" title="Cliente" type="java.lang.Object"/>
-                <Column editable="true" title="Data" type="java.lang.Object"/>
-                <Column editable="true" title="Criado" type="java.lang.Object"/>
-                <Column editable="true" title="Modificado" type="java.lang.Object"/>
+                <Column editable="false" title="idIndicador" type="java.lang.Integer"/>
+                <Column editable="false" title="idDesigner" type="java.lang.Integer"/>
+                <Column editable="false" title="Designer" type="java.lang.String"/>
+                <Column editable="false" title="Pedido" type="java.lang.Integer"/>
+                <Column editable="false" title="N&#xba;Artes" type="java.lang.Integer"/>
+                <Column editable="false" title="Status" type="java.lang.String"/>
+                <Column editable="false" title="idCliente" type="java.lang.Integer"/>
+                <Column editable="false" title="Cliente" type="java.lang.String"/>
+                <Column editable="false" title="Data" type="java.lang.Object"/>
+                <Column editable="false" title="Criado" type="java.lang.Object"/>
+                <Column editable="false" title="Modificado" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Duplo Clicke para Alterar Registro"/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -144,6 +145,7 @@
     <Component class="javax.swing.JTextField" name="txt_pesquisa">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="toolTipText" type="java.lang.String" value="Pesquisa"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -151,8 +153,10 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/adicionar32_orig.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Adicionar Registro"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseExited"/>
       </Events>
@@ -162,6 +166,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ie/img/pdf32_orig.png"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Gerar PDF"/>
       </Properties>
       <Events>
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseEntered"/>

@@ -6,7 +6,9 @@ package ie.view;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 /**
  *
@@ -70,7 +72,7 @@ public class main extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(140, 65));
         jPanel2.setPreferredSize(new java.awt.Dimension(140, 65));
 
-        btn_registros.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_registros.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btn_registros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/lista32_orig.png"))); // NOI18N
         btn_registros.setText(" Registros");
         btn_registros.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +99,7 @@ public class main extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btn_registros)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -105,7 +107,7 @@ public class main extends javax.swing.JFrame {
         jPanel3.setMinimumSize(new java.awt.Dimension(140, 65));
         jPanel3.setPreferredSize(new java.awt.Dimension(140, 65));
 
-        btn_desigers.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_desigers.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btn_desigers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/usuario32_orig.png"))); // NOI18N
         btn_desigers.setText(" Designers");
         btn_desigers.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,7 +134,7 @@ public class main extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btn_desigers)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -140,7 +142,7 @@ public class main extends javax.swing.JFrame {
         jPanel4.setMinimumSize(new java.awt.Dimension(140, 65));
         jPanel4.setPreferredSize(new java.awt.Dimension(140, 65));
 
-        btn_clientes.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_clientes.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btn_clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cliente32_orig.png"))); // NOI18N
         btn_clientes.setText(" Clientes");
         btn_clientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,7 +169,7 @@ public class main extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btn_clientes)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -175,7 +177,7 @@ public class main extends javax.swing.JFrame {
         jPanel5.setMinimumSize(new java.awt.Dimension(140, 65));
         jPanel5.setPreferredSize(new java.awt.Dimension(140, 65));
 
-        btn_relatorios.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_relatorios.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btn_relatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/relatorio32_orig.png"))); // NOI18N
         btn_relatorios.setText(" Relatórios");
         btn_relatorios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +204,7 @@ public class main extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(btn_relatorios)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -413,6 +415,7 @@ public class main extends javax.swing.JFrame {
 
         gerenciarClientes1.listarClientes();
         gerenciarFuncionario1.listarFuncionarios();
+        gerenciarRegistros1.listarRegistros();
 
     }//GEN-LAST:event_formWindowActivated
 
