@@ -10,6 +10,7 @@ import ie.model.Utilitarios;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -324,29 +325,40 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
 
     private void btn_excluirFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_excluirFuncionarioMouseClicked
 
-// botao Excluir Funcionarios
         if (btn_excluirFuncionario.isEnabled()) {
 
-            Funcionario obj = new Funcionario();
+            int resposta = JOptionPane.showConfirmDialog(
+                    null,
+                    "Todos os registros cadastrados com " + txt_nomeFuncionario.getText() + " serão apagados. Continuar?",
+                    "Confirmação",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+            if (resposta == JOptionPane.YES_OPTION) {
+                Funcionario obj = new Funcionario();
 
-            obj.setId_funcionario(Integer.parseInt(txt_idFuncionario.getText()));
+                obj.setId_funcionario(Integer.parseInt(txt_idFuncionario.getText()));
 
-            FuncionarioDAO dao = new FuncionarioDAO();
+                FuncionarioDAO dao = new FuncionarioDAO();
 
-            dao.excluirFuncionario(obj);
+                dao.excluirFuncionario(obj);
 
-            //Limpa os paineis
-            txt_idFuncionario.setText("");
-            txt_nomeFuncionario.setText("");
+                //Limpa os paineis
+                txt_idFuncionario.setText("");
+                txt_nomeFuncionario.setText("");
 
-            //desabilita botões
-            btn_novoFuncionario.setEnabled(false);
-            btn_alterarFuncionario.setEnabled(false);
-            btn_excluirFuncionario.setEnabled(false);
-            btn_limparFuncionario.setEnabled(false);
+                //desabilita botões
+                btn_novoFuncionario.setEnabled(false);
+                btn_alterarFuncionario.setEnabled(false);
+                btn_excluirFuncionario.setEnabled(false);
+                btn_limparFuncionario.setEnabled(false);
 
-            listarFuncionarios();
+                listarFuncionarios();
+            }
         }
+        //Limpa os paineis
+        txt_idFuncionario.setText("");
+        txt_nomeFuncionario.setText("");
 
     }//GEN-LAST:event_btn_excluirFuncionarioMouseClicked
 

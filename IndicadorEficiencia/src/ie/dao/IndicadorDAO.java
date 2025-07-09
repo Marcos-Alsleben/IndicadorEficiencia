@@ -64,7 +64,7 @@ public class IndicadorDAO {
 
             //1 passo  - criar o comando sql
             String sql = "update indicador set id_funcionario=?, pedido=?, qtd_artes=?, status=?, id_cliente=?, data=?,"
-                    + "criado=?, modificado=? where id=? ";
+                    + "criado=?, modificado=? where id_indicador=? ";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -96,7 +96,7 @@ public class IndicadorDAO {
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "delete from indicador where id=?";
+            String sql = "delete from indicador where id_indicador=?";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class IndicadorDAO {
 
     }
 
-//Metodo ListarProdutoCliche
+//Metodo ListarIndicador
     public List<Indicador> ListarIndicador() {
 
         try {
@@ -124,12 +124,12 @@ public class IndicadorDAO {
             List<Indicador> lista = new ArrayList<>();
 
             // Passo 2 criar o comando sql, organizar e executar
-            String sql = "SELECT id_indicador as idIndicador, id_funcionario as idDesigner, funcionario as Designer,\n"
-                    + "pedido as Pedido, qtd_artes as NºArtes, status as Status, id_cliente as idCliente,\n"
-                    + "cliente as Cliente, data as Data, indicador.criado as Criado, indicador.modificado as Modificado\n"
+            String sql = "SELECT id_indicador as idIndicador, funcionario.id_funcionario as idDesigner, funcionario.nome as Designer,\n"
+                    + "pedido as Pedido, qtd_artes as NºArtes, status as Status, cliente.id_cliente as idCliente,\n"
+                    + "cliente.nome as Cliente, data as Data, indicador.criado as Criado, indicador.modificado as Modificado\n"
                     + "FROM indicadoreficiencia.indicador\n"
-                    + "INNER JOIN indicadoreficiencia.cliente ON indicador.id_cliente = id_cliente\n"
-                    + "INNER JOIN indicadoreficiencia.funcionario ON indicador.id_funcionario = id_funcionario\n"
+                    + "INNER JOIN indicadoreficiencia.cliente ON indicador.id_cliente = cliente.id_cliente\n"
+                    + "INNER JOIN indicadoreficiencia.funcionario ON indicador.id_funcionario = funcionario.id_funcionario\n"
                     + "ORDER by abs(indicador.criado) desc;";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
@@ -172,22 +172,22 @@ public class IndicadorDAO {
             List<Indicador> lista = new ArrayList<>();
 
             // Passo 2 criar o comando sql, organizar e executar
-            String sql = "SELECT id_indicador as idIndicador, id_funcionario as idDesigner, funcionario as Designer,\n"
-                    + "pedido as Pedido, qtd_artes as NºArtes, status as Status, id_cliente as idCliente,\n"
-                    + "cliente as Cliente, data as Data, indicador.criado as Criado, indicador.modificado as Modificado\n"
+            String sql = "SELECT id_indicador as idIndicador, funcionario.id_funcionario as idDesigner, funcionario.nome as Designer,\n"
+                    + "pedido as Pedido, qtd_artes as NºArtes, status as Status, cliente.id_cliente as idCliente,\n"
+                    + "cliente.nome as Cliente, data as Data, indicador.criado as Criado, indicador.modificado as Modificado\n"
                     + "FROM indicadoreficiencia.indicador\n"
-                    + "INNER JOIN indicadoreficiencia.cliente ON indicador.id_cliente = id_cliente\n"
-                    + "INNER JOIN indicadoreficiencia.funcionario ON indicador.id_funcionario = id_funcionario\n"
-                    + "WHERE Designer LIKE '%%'\n"
-                    + "OR Pedido LIKE '%%'\n"
-                    + "OR Status LIKE '%%'\n"
-                    + "OR Cliente LIKE '%%'\n"
+                    + "INNER JOIN indicadoreficiencia.cliente ON indicador.id_cliente = cliente.id_cliente\n"
+                    + "INNER JOIN indicadoreficiencia.funcionario ON indicador.id_funcionario = funcionario.id_funcionario\n"
+                    + "WHERE funcionario.nome LIKE ?\n"
+                    + "OR Pedido LIKE ?\n"
+                    + "OR Status LIKE ?\n"
+                    + "OR cliente.nome LIKE ?\n"
                     + "ORDER by abs(indicador.criado) desc;";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, pesquisa);
-            stmt.setString(2, pesquisa);
-            stmt.setString(3, pesquisa);
-            stmt.setString(4, pesquisa);
+            stmt.setString(1, "%" + pesquisa + "%");
+            stmt.setString(2, "%" + pesquisa + "%");
+            stmt.setString(3, "%" + pesquisa + "%");
+            stmt.setString(4, "%" + pesquisa + "%");
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -218,5 +218,6 @@ public class IndicadorDAO {
         }
 
     }
+
 
 }

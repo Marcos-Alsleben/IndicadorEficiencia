@@ -9,6 +9,10 @@ import ie.dao.IndicadorDAO;
 import ie.model.Funcionario;
 import ie.model.Indicador;
 import java.awt.Frame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +45,65 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         }
     }
 
+//Metodo Pesquisar Registros
+    public void PesquisarRegistros() {
+
+        String pesquisa = "%" + txt_pesquisa.getText() + "%";
+
+        IndicadorDAO dao = new IndicadorDAO();
+        List<Indicador> lista = dao.pesquisarIndicador(pesquisa);
+        DefaultTableModel dados = (DefaultTableModel) jT_registros.getModel();
+        dados.setNumRows(0);
+        for (Indicador c : lista) {
+            dados.addRow(new Object[]{
+                c.getId_indicador(),
+                c.getId_funcionario(),
+                c.getFuncionario(),
+                c.getPedido(),
+                c.getQtd_artes(),
+                c.getStatus(),
+                c.getId_cliente(),
+                c.getCliente(),
+                c.getData(),
+                c.getCriado(),
+                c.getModificado()});
+
+        }
+
+    }
+
+
+    //Metodo Alterar Registros
+    public void AbrirAlterarRegistro() {
+        jT_registros.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    Frame parent = (Frame) SwingUtilities.getWindowAncestor(jT_registros);
+                    AlterarRegistro dialog = new AlterarRegistro(parent, true);
+
+                    int selectedRow = jT_registros.getSelectedRow();
+
+                    dialog.AlterarVariaveis(
+                            jT_registros.getValueAt(selectedRow, 0).toString(),
+                            jT_registros.getValueAt(selectedRow, 2).toString(),
+                            jT_registros.getValueAt(selectedRow, 3).toString(),
+                            jT_registros.getValueAt(selectedRow, 4).toString(),
+                            jT_registros.getValueAt(selectedRow, 5).toString(),
+                            jT_registros.getValueAt(selectedRow, 7).toString(),
+                            jT_registros.getValueAt(selectedRow, 8).toString()
+
+                    );
+
+                    dialog.setVisible(true);
+                }
+            }
+        });
+    }
+
     public GerenciarRegistros() {
         initComponents();
+        AbrirAlterarRegistro();
+
     }
 
     /**
@@ -59,6 +120,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         txt_pesquisa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btn_cancelaPesquisa = new javax.swing.JLabel();
 
         jT_registros.setAutoCreateRowSorter(true);
         jT_registros.setModel(new javax.swing.table.DefaultTableModel(
@@ -88,10 +150,16 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             }
         });
         jT_registros.setToolTipText("Duplo Clicke para Alterar Registro");
+        jT_registros.setFocusable(false);
         jScrollPane1.setViewportView(jT_registros);
 
         txt_pesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_pesquisa.setToolTipText("Pesquisa");
+        txt_pesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_pesquisaKeyReleased(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
         jLabel1.setToolTipText("Adicionar Registro");
@@ -118,6 +186,21 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             }
         });
 
+        btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_orig.png"))); // NOI18N
+        btn_cancelaPesquisa.setToolTipText("Pesquisar");
+        btn_cancelaPesquisa.setEnabled(false);
+        btn_cancelaPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cancelaPesquisaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cancelaPesquisaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cancelaPesquisaMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +211,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancelaPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2))
@@ -142,7 +227,8 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(btn_cancelaPesquisa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
@@ -182,8 +268,40 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void txt_pesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyReleased
+        if (!"".equals(txt_pesquisa.getText())) {
+            btn_cancelaPesquisa.setEnabled(true);
+        } else {
+            btn_cancelaPesquisa.setEnabled(false);
+        }
+        PesquisarRegistros();
+
+    }//GEN-LAST:event_txt_pesquisaKeyReleased
+
+    private void btn_cancelaPesquisaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseEntered
+
+        btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_sat.png")));
+
+    }//GEN-LAST:event_btn_cancelaPesquisaMouseEntered
+
+    private void btn_cancelaPesquisaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseExited
+
+        btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_orig.png")));
+
+    }//GEN-LAST:event_btn_cancelaPesquisaMouseExited
+
+    private void btn_cancelaPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseClicked
+
+        if (btn_cancelaPesquisa.isEnabled()) {
+            txt_pesquisa.setText("");
+            PesquisarRegistros();
+            btn_cancelaPesquisa.setEnabled(false);
+        }
+    }//GEN-LAST:event_btn_cancelaPesquisaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_cancelaPesquisa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
