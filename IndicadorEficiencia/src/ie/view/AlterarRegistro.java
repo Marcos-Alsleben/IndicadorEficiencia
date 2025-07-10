@@ -4,6 +4,7 @@
  */
 package ie.view;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import ie.dao.ClienteDAO;
 import ie.dao.FuncionarioDAO;
 import ie.dao.IndicadorDAO;
@@ -12,6 +13,7 @@ import ie.model.Cliente;
 import ie.model.Funcionario;
 import ie.model.Indicador;
 import ie.model.Utilitarios;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -121,6 +123,11 @@ public class AlterarRegistro extends javax.swing.JDialog {
         initComponents();
         SetIconCalendar();
         this.setLocationRelativeTo(null);
+
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) jd_data.getDateEditor();
+        editor.addPropertyChangeListener("foreground", evt -> {
+            editor.setForeground(new Color(187, 187, 187)); // RGB personalizado
+        });
 
         AtualizarcbClientes();
         AtualizarcbDesigner();
