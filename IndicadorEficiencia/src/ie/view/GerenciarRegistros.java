@@ -4,16 +4,30 @@
  */
 package ie.view;
 
+import com.lowagie.text.DocumentException;
 import ie.dao.FuncionarioDAO;
 import ie.dao.IndicadorDAO;
 import ie.model.Funcionario;
 import ie.model.Indicador;
+import ie.model.Utilitarios;
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,13 +86,13 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     }
 
-
     //Metodo Alterar Registros
     public void AbrirAlterarRegistro() {
         jT_registros.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
                     Frame parent = (Frame) SwingUtilities.getWindowAncestor(jT_registros);
+                    AplicarBlur(true);
                     AlterarRegistro dialog = new AlterarRegistro(parent, true);
 
                     int selectedRow = jT_registros.getSelectedRow();
@@ -91,13 +105,35 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                             jT_registros.getValueAt(selectedRow, 5).toString(),
                             jT_registros.getValueAt(selectedRow, 7).toString(),
                             jT_registros.getValueAt(selectedRow, 8).toString()
-
                     );
 
                     dialog.setVisible(true);
+                    AplicarBlur(false);
                 }
             }
         });
+    }
+
+    public void AplicarBlur(boolean ativar) {
+        JPanel blurPane = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+                g2.setColor(Color.GRAY);
+                g2.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        blurPane.setOpaque(false);
+
+        // Obtém a janela que contém este JPanel
+        Window janela = SwingUtilities.getWindowAncestor(this);
+        if (janela instanceof JFrame) {
+            JFrame frame = (JFrame) janela;
+            frame.getRootPane().setGlassPane(blurPane);
+            blurPane.setVisible(ativar);
+            blurPane.repaint(); // Atualiza a tela
+        }
     }
 
     public GerenciarRegistros() {
@@ -152,12 +188,32 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         jT_registros.setToolTipText("Duplo Clicke para Alterar Registro");
         jT_registros.setFocusable(false);
         jScrollPane1.setViewportView(jT_registros);
+        if (jT_registros.getColumnModel().getColumnCount() > 0) {
+            jT_registros.getColumnModel().getColumn(0).setMinWidth(0);
+            jT_registros.getColumnModel().getColumn(0).setPreferredWidth(0);
+            jT_registros.getColumnModel().getColumn(0).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(1).setMinWidth(0);
+            jT_registros.getColumnModel().getColumn(1).setPreferredWidth(0);
+            jT_registros.getColumnModel().getColumn(1).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(6).setMinWidth(0);
+            jT_registros.getColumnModel().getColumn(6).setPreferredWidth(0);
+            jT_registros.getColumnModel().getColumn(6).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(9).setMinWidth(0);
+            jT_registros.getColumnModel().getColumn(9).setPreferredWidth(0);
+            jT_registros.getColumnModel().getColumn(9).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(10).setMinWidth(0);
+            jT_registros.getColumnModel().getColumn(10).setPreferredWidth(0);
+            jT_registros.getColumnModel().getColumn(10).setMaxWidth(0);
+        }
 
         txt_pesquisa.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_pesquisa.setToolTipText("Pesquisa");
         txt_pesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_pesquisaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pesquisaKeyTyped(evt);
             }
         });
 
@@ -178,6 +234,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/pdf32_orig.png"))); // NOI18N
         jLabel2.setToolTipText("Gerar PDF");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel2MouseEntered(evt);
             }
@@ -261,9 +320,13 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
+        AplicarBlur(true);
+
         Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
         NovoRegistro dialog = new NovoRegistro(parent, true);
         dialog.setVisible(true);
+
+        AplicarBlur(false);
 
 
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -298,6 +361,34 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             btn_cancelaPesquisa.setEnabled(false);
         }
     }//GEN-LAST:event_btn_cancelaPesquisaMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+
+   Utilitarios utl = new Utilitarios();
+        try {
+            utl.gerarPDF(jT_registros, "TB_Registros de Apontamentos.pdf", Arrays.asList("Designer", "Pedido", "NºArtes", "Status", "Cliente",
+                    "Data", "Criado", "Modificado"), "Indicador de Eficiência");
+        } catch (FileNotFoundException | DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(GerenciarRegistros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txt_pesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyTyped
+
+String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321-_";
+        char keyChar = evt.getKeyChar();
+
+        if (Character.isLetter(keyChar)) {
+            keyChar = Character.toUpperCase(keyChar);
+            evt.setKeyChar(keyChar);
+        } else if (!caracteres.contains(Character.toUpperCase(keyChar) + "")) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txt_pesquisaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,6 +4,8 @@
  */
 package ie.view;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 import ie.dao.ClienteDAO;
 import ie.dao.FuncionarioDAO;
 import ie.dao.IndicadorDAO;
@@ -11,11 +13,13 @@ import ie.model.Cliente;
 import ie.model.Funcionario;
 import ie.model.Indicador;
 import ie.model.Utilitarios;
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -96,6 +100,12 @@ public class NovoRegistro extends javax.swing.JDialog {
 
         AtualizarcbClientes();
         AtualizarcbDesigner();
+
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) jd_data.getDateEditor();
+        editor.addPropertyChangeListener("foreground", evt -> {
+            editor.setForeground(new Color(187, 187, 187)); // RGB personalizado
+        });
+
     }
 
     /**
@@ -132,11 +142,21 @@ public class NovoRegistro extends javax.swing.JDialog {
         lb_designer.setText("Designer");
 
         txt_pedido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_pedido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pedidoKeyTyped(evt);
+            }
+        });
 
         lb_pedido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lb_pedido.setText("Pedido");
 
         txt_numArtes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_numArtes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numArtesKeyTyped(evt);
+            }
+        });
 
         lb_numArtes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lb_numArtes.setText("Nº Artes");
@@ -199,7 +219,7 @@ public class NovoRegistro extends javax.swing.JDialog {
                             .addComponent(lb_cliente)
                             .addComponent(cb_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +247,7 @@ public class NovoRegistro extends javax.swing.JDialog {
                 .addGap(0, 0, 0)
                 .addComponent(cb_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lb_data)
                         .addGap(0, 0, 0)
@@ -319,6 +339,29 @@ public class NovoRegistro extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txt_pedidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pedidoKeyTyped
+
+        char keyChar = evt.getKeyChar();
+        String permitidos = "0123456789";
+
+        if (!permitidos.contains(String.valueOf(keyChar))) {
+            evt.consume(); // bloqueia qualquer caractere que não esteja na lista
+        }
+
+
+    }//GEN-LAST:event_txt_pedidoKeyTyped
+
+    private void txt_numArtesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numArtesKeyTyped
+
+        char keyChar = evt.getKeyChar();
+        String permitidos = "0123456789";
+
+        if (!permitidos.contains(String.valueOf(keyChar))) {
+            evt.consume(); // bloqueia qualquer caractere que não esteja na lista
+        }
+
+    }//GEN-LAST:event_txt_numArtesKeyTyped
 
     /**
      * @param args the command line arguments

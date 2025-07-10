@@ -163,11 +163,21 @@ public class AlterarRegistro extends javax.swing.JDialog {
         lb_designer.setText("Designer");
 
         txt_pedido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_pedido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pedidoKeyTyped(evt);
+            }
+        });
 
         lb_pedido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lb_pedido.setText("Pedido");
 
         txt_numArtes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_numArtes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numArtesKeyTyped(evt);
+            }
+        });
 
         lb_numArtes.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lb_numArtes.setText("Nº Artes");
@@ -444,6 +454,28 @@ public class AlterarRegistro extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void txt_pedidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pedidoKeyTyped
+
+        char keyChar = evt.getKeyChar();
+        String permitidos = "0123456789";
+
+        if (!permitidos.contains(String.valueOf(keyChar))) {
+            evt.consume(); // bloqueia qualquer caractere que não esteja na lista
+        }
+
+    }//GEN-LAST:event_txt_pedidoKeyTyped
+
+    private void txt_numArtesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numArtesKeyTyped
+
+        char keyChar = evt.getKeyChar();
+        String permitidos = "0123456789";
+
+        if (!permitidos.contains(String.valueOf(keyChar))) {
+            evt.consume(); // bloqueia qualquer caractere que não esteja na lista
+        }
+
+    }//GEN-LAST:event_txt_numArtesKeyTyped
 
     /**
      * @param args the command line arguments

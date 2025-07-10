@@ -114,7 +114,7 @@ private Connection con;
             List<Cliente> lista = new ArrayList<>();
 
             // Passo 2 criar o comando sql, organizar e executar
-            String sql = "select * from cliente";
+            String sql = "select * from cliente ORDER BY nome asc";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 

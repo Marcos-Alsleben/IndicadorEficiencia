@@ -178,6 +178,9 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pedidoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lb_pedido">
           <Properties>
@@ -191,6 +194,9 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_numArtesKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lb_numArtes">
           <Properties>

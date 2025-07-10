@@ -99,21 +99,4 @@ public class Utilitarios {
         }
     }
 
-// Método para abrir pasta
-    public void abrirPasta(String caminhoPasta) {
-        try {
-            File pasta = new File(caminhoPasta);
-            if (pasta.exists() && pasta.isDirectory()) {
-                Desktop desktop = Desktop.getDesktop();
-                desktop.open(pasta);
-            } else {
-                JOptionPane.showMessageDialog(null, "Não foi possível localizar a pasta: " + caminhoPasta);
-            }
-        } catch (IOException e) {
-            System.err.println("Erro ao abrir a pasta: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Erro ao abrir a pasta: " + e.getMessage());
-        }
-
-    }
-
 }

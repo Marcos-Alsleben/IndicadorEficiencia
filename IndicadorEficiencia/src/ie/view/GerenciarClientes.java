@@ -10,6 +10,7 @@ import ie.model.Utilitarios;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -318,6 +319,15 @@ public class GerenciarClientes extends javax.swing.JPanel {
 // botao Excluir Clientes
         if (btn_excluirCliente.isEnabled()) {
 
+ int resposta = JOptionPane.showConfirmDialog(
+                    null,
+                    "Todos os registros cadastrados com " + txt_nomeCliente.getText() + " serão apagados. Continuar?",
+                    "Confirmação",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+            if (resposta == JOptionPane.YES_OPTION) {
+
             Cliente obj = new Cliente();
 
             obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
@@ -338,6 +348,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
 
             listarClientes();
         }
+}
 
     }//GEN-LAST:event_btn_excluirClienteMouseClicked
 
