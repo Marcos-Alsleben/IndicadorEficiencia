@@ -14,6 +14,7 @@ import ie.model.Funcionario;
 import ie.model.Indicador;
 import ie.model.Utilitarios;
 import java.awt.Color;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -92,19 +93,36 @@ public class NovoRegistro extends javax.swing.JDialog {
         return id;
     }
 
+//Metodo Atualiza Data
+    public void AtualizaData() {
+
+        Utilitarios dh = new Utilitarios();
+        String dataHora = dh.DH();
+
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // ajuste o formato conforme necessário
+            Date dataConvertida = formato.parse(dataHora);
+            jd_data.setDate(dataConvertida);
+        } catch (ParseException e) {
+            e.printStackTrace(); // ou trate de forma mais elegante
+        }
+
+    }
+
     public NovoRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         SetIconCalendar();
         this.setLocationRelativeTo(null);
 
-        AtualizarcbClientes();
-        AtualizarcbDesigner();
-
         JTextFieldDateEditor editor = (JTextFieldDateEditor) jd_data.getDateEditor();
         editor.addPropertyChangeListener("foreground", evt -> {
             editor.setForeground(new Color(187, 187, 187)); // RGB personalizado
         });
+
+        AtualizarcbClientes();
+        AtualizarcbDesigner();
+        AtualizaData();
 
     }
 

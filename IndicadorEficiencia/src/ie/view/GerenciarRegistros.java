@@ -86,7 +86,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     }
 
-    //Metodo Alterar Registros
+    //Metodo Abrir Alterar Registros
     public void AbrirAlterarRegistro() {
         jT_registros.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -114,6 +114,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         });
     }
 
+    // Metodo aplicar Blur
     public void AplicarBlur(boolean ativar) {
         JPanel blurPane = new JPanel() {
             protected void paintComponent(Graphics g) {
