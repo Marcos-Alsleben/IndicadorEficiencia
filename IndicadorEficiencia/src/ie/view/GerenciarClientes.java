@@ -319,7 +319,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
 // botao Excluir Clientes
         if (btn_excluirCliente.isEnabled()) {
 
- int resposta = JOptionPane.showConfirmDialog(
+            int resposta = JOptionPane.showConfirmDialog(
                     null,
                     "Todos os registros cadastrados com " + txt_nomeCliente.getText() + " serão apagados. Continuar?",
                     "Confirmação",
@@ -328,27 +328,37 @@ public class GerenciarClientes extends javax.swing.JPanel {
             );
             if (resposta == JOptionPane.YES_OPTION) {
 
-            Cliente obj = new Cliente();
+                Cliente obj = new Cliente();
 
-            obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
+                obj.setId_cliente(Integer.parseInt(txt_idCliente.getText()));
 
-            ClienteDAO dao = new ClienteDAO();
+                ClienteDAO dao = new ClienteDAO();
 
-            dao.excluirCliente(obj);
+                dao.excluirCliente(obj);
 
-            //Limpa os paineis
-            txt_idCliente.setText("");
-            txt_nomeCliente.setText("");
+                //Limpa os paineis
+                txt_idCliente.setText("");
+                txt_nomeCliente.setText("");
 
-            //desabilita botões
-            btn_novoCliente.setEnabled(false);
-            btn_alterarCliente.setEnabled(false);
-            btn_excluirCliente.setEnabled(false);
-            btn_limparCliente.setEnabled(false);
+                //desabilita botões
+                btn_novoCliente.setEnabled(false);
+                btn_alterarCliente.setEnabled(false);
+                btn_excluirCliente.setEnabled(false);
+                btn_limparCliente.setEnabled(false);
 
-            listarClientes();
+                listarClientes();
+            }
         }
-}
+
+        //Limpa os paineis
+        txt_idCliente.setText("");
+        txt_nomeCliente.setText("");
+
+        //desabilita botões
+        btn_novoCliente.setEnabled(false);
+        btn_alterarCliente.setEnabled(false);
+        btn_excluirCliente.setEnabled(false);
+        btn_limparCliente.setEnabled(false);
 
     }//GEN-LAST:event_btn_excluirClienteMouseClicked
 

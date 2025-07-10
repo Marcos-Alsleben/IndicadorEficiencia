@@ -360,6 +360,12 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
         txt_idFuncionario.setText("");
         txt_nomeFuncionario.setText("");
 
+        //desabilita botões
+        btn_novoFuncionario.setEnabled(false);
+        btn_alterarFuncionario.setEnabled(false);
+        btn_excluirFuncionario.setEnabled(false);
+        btn_limparFuncionario.setEnabled(false);
+
     }//GEN-LAST:event_btn_excluirFuncionarioMouseClicked
 
     private void btn_limparFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_limparFuncionarioMouseClicked
