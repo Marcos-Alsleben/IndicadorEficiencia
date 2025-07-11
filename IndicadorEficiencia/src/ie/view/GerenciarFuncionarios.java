@@ -123,6 +123,7 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
         });
 
         btn_novoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
+        btn_novoFuncionario.setToolTipText("Adicionar");
         btn_novoFuncionario.setEnabled(false);
         btn_novoFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,6 +138,7 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
         });
 
         btn_alterarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/editar32_orig.png"))); // NOI18N
+        btn_alterarFuncionario.setToolTipText("Alterar");
         btn_alterarFuncionario.setEnabled(false);
         btn_alterarFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -151,6 +153,7 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
         });
 
         btn_excluirFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/excluir32_orig.png"))); // NOI18N
+        btn_excluirFuncionario.setToolTipText("Excluir");
         btn_excluirFuncionario.setEnabled(false);
         btn_excluirFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,6 +168,7 @@ public class GerenciarFuncionarios extends javax.swing.JPanel {
         });
 
         btn_limparFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/limpar32_orig.png"))); // NOI18N
+        btn_limparFuncionario.setToolTipText("Limpar");
         btn_limparFuncionario.setEnabled(false);
         btn_limparFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

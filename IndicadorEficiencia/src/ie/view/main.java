@@ -337,6 +337,8 @@ public class main extends javax.swing.JFrame {
         btn_clientes.setForeground(new java.awt.Color(221, 221, 221));
         btn_relatorios.setForeground(new java.awt.Color(221, 221, 221));
 
+        gerenciarRegistros1.listarRegistros();
+
         MostraCardLayout("card1");
 
 

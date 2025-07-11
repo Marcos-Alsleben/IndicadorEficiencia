@@ -118,6 +118,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
         txt_idCliente.setFocusable(false);
 
         btn_novoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png"))); // NOI18N
+        btn_novoCliente.setToolTipText("Adicionar");
         btn_novoCliente.setEnabled(false);
         btn_novoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,6 +133,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
         });
 
         btn_alterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/editar32_orig.png"))); // NOI18N
+        btn_alterarCliente.setToolTipText("Alterar");
         btn_alterarCliente.setEnabled(false);
         btn_alterarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,6 +148,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
         });
 
         btn_excluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/excluir32_orig.png"))); // NOI18N
+        btn_excluirCliente.setToolTipText("Excluir");
         btn_excluirCliente.setEnabled(false);
         btn_excluirCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -160,6 +163,7 @@ public class GerenciarClientes extends javax.swing.JPanel {
         });
 
         btn_limparCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/limpar32_orig.png"))); // NOI18N
+        btn_limparCliente.setToolTipText("Limpar");
         btn_limparCliente.setEnabled(false);
         btn_limparCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

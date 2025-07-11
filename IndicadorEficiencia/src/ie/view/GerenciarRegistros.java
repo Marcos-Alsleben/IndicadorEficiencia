@@ -196,9 +196,15 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             jT_registros.getColumnModel().getColumn(1).setMinWidth(0);
             jT_registros.getColumnModel().getColumn(1).setPreferredWidth(0);
             jT_registros.getColumnModel().getColumn(1).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(2).setMinWidth(200);
+            jT_registros.getColumnModel().getColumn(2).setPreferredWidth(200);
+            jT_registros.getColumnModel().getColumn(4).setMinWidth(50);
+            jT_registros.getColumnModel().getColumn(4).setPreferredWidth(50);
             jT_registros.getColumnModel().getColumn(6).setMinWidth(0);
             jT_registros.getColumnModel().getColumn(6).setPreferredWidth(0);
             jT_registros.getColumnModel().getColumn(6).setMaxWidth(0);
+            jT_registros.getColumnModel().getColumn(7).setMinWidth(150);
+            jT_registros.getColumnModel().getColumn(7).setPreferredWidth(150);
             jT_registros.getColumnModel().getColumn(9).setMinWidth(0);
             jT_registros.getColumnModel().getColumn(9).setPreferredWidth(0);
             jT_registros.getColumnModel().getColumn(9).setMaxWidth(0);
@@ -367,8 +373,8 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
    Utilitarios utl = new Utilitarios();
         try {
-            utl.gerarPDF(jT_registros, "TB_Registros de Apontamentos.pdf", Arrays.asList("Designer", "Pedido", "NºArtes", "Status", "Cliente",
-                    "Data", "Criado", "Modificado"), "Indicador de Eficiência");
+            utl.gerarPDF(jT_registros, "TB_Registro de Apontamentos.pdf", Arrays.asList("Designer", "Pedido", "NºArtes", "Status", "Cliente",
+                    "Data", "Criado", "Modificado"), "Indicador de Eficiência  Pré-Impressão");
         } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
         } catch (IOException ex) {
