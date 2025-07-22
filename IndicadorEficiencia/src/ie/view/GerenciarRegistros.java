@@ -253,7 +253,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
         });
 
         btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_orig.png"))); // NOI18N
-        btn_cancelaPesquisa.setToolTipText("Pesquisar");
+        btn_cancelaPesquisa.setToolTipText("Cancelar Pesquisa");
         btn_cancelaPesquisa.setEnabled(false);
         btn_cancelaPesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -371,7 +371,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-   Utilitarios utl = new Utilitarios();
+        Utilitarios utl = new Utilitarios();
         try {
             utl.gerarPDF(jT_registros, "TB_Registro de Apontamentos.pdf", Arrays.asList("Designer", "Pedido", "NºArtes", "Status", "Cliente",
                     "Data", "Criado", "Modificado"), "Indicador de Eficiência  Pré-Impressão");
@@ -385,7 +385,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     private void txt_pesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyTyped
 
-String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321-_";
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321-_";
         char keyChar = evt.getKeyChar();
 
         if (Character.isLetter(keyChar)) {

@@ -130,7 +130,7 @@ public class IndicadorDAO {
                     + "FROM indicadoreficiencia.indicador\n"
                     + "INNER JOIN indicadoreficiencia.cliente ON indicador.id_cliente = cliente.id_cliente\n"
                     + "INNER JOIN indicadoreficiencia.funcionario ON indicador.id_funcionario = funcionario.id_funcionario\n"
-                    + "ORDER by abs(indicador.criado) desc;";
+                    + "ORDER by abs(indicador.data) desc;";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
@@ -182,7 +182,7 @@ public class IndicadorDAO {
                     + "OR Pedido LIKE ?\n"
                     + "OR Status LIKE ?\n"
                     + "OR cliente.nome LIKE ?\n"
-                    + "ORDER by abs(indicador.criado) desc;";
+                    + "ORDER by abs(indicador.data) desc;";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, "%" + pesquisa + "%");
             stmt.setString(2, "%" + pesquisa + "%");
