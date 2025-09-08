@@ -385,15 +385,8 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
     private void txt_pesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyTyped
 
-        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321-_";
-        char keyChar = evt.getKeyChar();
-
-        if (Character.isLetter(keyChar)) {
-            keyChar = Character.toUpperCase(keyChar);
-            evt.setKeyChar(keyChar);
-        } else if (!caracteres.contains(Character.toUpperCase(keyChar) + "")) {
-            evt.consume();
-        }
+      char keyChar = evt.getKeyChar();
+    evt.setKeyChar(Character.toUpperCase(keyChar));
 
     }//GEN-LAST:event_txt_pesquisaKeyTyped
 
