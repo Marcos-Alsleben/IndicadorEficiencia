@@ -60,10 +60,13 @@ public class Utilitarios {
         }
 
         // Adicionando dados
-        for (int rows = 0; rows < tabela.getRowCount(); rows++) {
+        for (int viewRow = 0; viewRow < tabela.getRowCount(); viewRow++) {
+            int modelRow = tabela.convertRowIndexToModel(viewRow); // respeita a ordenação visível
             for (String coluna : colunasIncluidas) {
-                int colIndex = tabela.getColumnModel().getColumnIndex(coluna);
-                PdfPCell cell = new PdfPCell(new Paragraph(tabela.getModel().getValueAt(rows, colIndex).toString(), fonteDados));
+                int viewCol = tabela.getColumnModel().getColumnIndex(coluna);
+                int modelCol = tabela.convertColumnIndexToModel(viewCol);
+                Object valor = tabela.getModel().getValueAt(modelRow, modelCol);
+                PdfPCell cell = new PdfPCell(new Paragraph(valor != null ? valor.toString() : "", fonteDados));
                 cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
                 pdfTable.addCell(cell);
             }
