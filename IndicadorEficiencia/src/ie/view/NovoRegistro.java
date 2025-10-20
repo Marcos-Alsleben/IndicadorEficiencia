@@ -14,13 +14,13 @@ import ie.model.Funcionario;
 import ie.model.Indicador;
 import ie.model.Utilitarios;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
@@ -113,6 +113,7 @@ public class NovoRegistro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         SetIconCalendar();
+        lb_jaCadastrado.setVisible(false);
         this.setLocationRelativeTo(null);
 
         JTextFieldDateEditor editor = (JTextFieldDateEditor) jd_data.getDateEditor();
@@ -149,6 +150,7 @@ public class NovoRegistro extends javax.swing.JDialog {
         lb_data = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jd_data = new com.toedter.calendar.JDateChooser();
+        lb_jaCadastrado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Registro");
@@ -161,6 +163,9 @@ public class NovoRegistro extends javax.swing.JDialog {
 
         txt_pedido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_pedido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_pedidoKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_pedidoKeyTyped(evt);
             }
@@ -206,6 +211,10 @@ public class NovoRegistro extends javax.swing.JDialog {
 
         jd_data.setDateFormatString("yyyy/MM/dd");
 
+        lb_jaCadastrado.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        lb_jaCadastrado.setForeground(new java.awt.Color(255, 102, 0));
+        lb_jaCadastrado.setText("Já Cadastrado!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,7 +234,10 @@ public class NovoRegistro extends javax.swing.JDialog {
                                 .addComponent(lb_designer)
                                 .addComponent(cb_designer, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lb_pedido)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lb_pedido)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lb_jaCadastrado))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(lb_numArtes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -247,30 +259,33 @@ public class NovoRegistro extends javax.swing.JDialog {
                 .addGap(0, 0, 0)
                 .addComponent(cb_designer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_pedido)
-                .addGap(0, 0, 0)
-                .addComponent(txt_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lb_numArtes)
+                        .addComponent(lb_pedido)
                         .addGap(0, 0, 0)
-                        .addComponent(txt_numArtes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lb_status)
+                        .addComponent(txt_pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lb_numArtes)
+                                .addGap(0, 0, 0)
+                                .addComponent(txt_numArtes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lb_status)
+                                .addGap(0, 0, 0)
+                                .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_cliente)
                         .addGap(0, 0, 0)
-                        .addComponent(cb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_cliente)
-                .addGap(0, 0, 0)
-                .addComponent(cb_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lb_data)
-                        .addGap(0, 0, 0)
-                        .addComponent(jd_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
+                        .addComponent(cb_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lb_data)
+                                .addGap(0, 0, 0)
+                                .addComponent(jd_data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2)))
+                    .addComponent(lb_jaCadastrado))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -381,6 +396,23 @@ public class NovoRegistro extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txt_numArtesKeyTyped
 
+    private void txt_pedidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pedidoKeyReleased
+
+        String pedido = txt_pedido.getText();
+
+        try {
+
+            IndicadorDAO dao = new IndicadorDAO();
+            boolean existe = dao.pesquisaBooleana(pedido);
+            lb_jaCadastrado.setVisible(existe);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            lb_jaCadastrado.setVisible(false);
+        }
+
+
+    }//GEN-LAST:event_txt_pedidoKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -433,6 +465,7 @@ public class NovoRegistro extends javax.swing.JDialog {
     private javax.swing.JLabel lb_cliente;
     private javax.swing.JLabel lb_data;
     private javax.swing.JLabel lb_designer;
+    private javax.swing.JLabel lb_jaCadastrado;
     private javax.swing.JLabel lb_numArtes;
     private javax.swing.JLabel lb_pedido;
     private javax.swing.JLabel lb_status;

@@ -219,5 +219,24 @@ public class IndicadorDAO {
 
     }
 
+    public boolean pesquisaBooleana(String pesquisa) throws SQLException {
+        String sql = "SELECT EXISTS (SELECT 1 FROM indicadoreficiencia.indicador WHERE pedido = ?) AS pedido_existe;";
+        boolean resultado = false;
+
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, pesquisa);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    resultado = rs.getInt("pedido_existe") == 1;
+                }
+            }
+        } finally {
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        }
+
+        return resultado;
+    }
 
 }
