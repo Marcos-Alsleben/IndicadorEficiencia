@@ -114,7 +114,7 @@ public void listarResumo() {
                 return canEdit [columnIndex];
             }
         });
-        jT_resumo.setToolTipText("Duplo Clicke para Alterar Registro");
+        jT_resumo.setToolTipText("");
         jT_resumo.setFocusable(false);
         jScrollPane1.setViewportView(jT_resumo);
         if (jT_resumo.getColumnModel().getColumnCount() > 0) {

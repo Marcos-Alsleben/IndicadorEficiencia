@@ -79,7 +79,7 @@
                 <Column editable="true" title="Total" type="java.lang.Integer"/>
               </Table>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Duplo Clicke para Alterar Registro"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="130" prefWidth="130" resizable="true">
