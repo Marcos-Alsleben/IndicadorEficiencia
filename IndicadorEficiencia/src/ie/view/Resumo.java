@@ -6,18 +6,7 @@ package ie.view;
 
 import ie.dao.IndicadorDAO;
 import ie.model.Indicador;
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Window;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.List;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -68,7 +57,6 @@ public void listarResumo() {
 
     public Resumo() {
         initComponents();
-        AtualizarAnos();
 
     }
 

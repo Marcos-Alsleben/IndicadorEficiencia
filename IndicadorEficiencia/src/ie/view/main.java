@@ -409,6 +409,8 @@ public class main extends javax.swing.JFrame {
         gerenciarClientes1.listarClientes();
         gerenciarFuncionario1.listarFuncionarios();
         gerenciarRegistros1.PesquisarRegistros();
+        resumo1.AtualizarAnos();
+        resumo1.listarResumo();
 
     }//GEN-LAST:event_formWindowActivated
 
