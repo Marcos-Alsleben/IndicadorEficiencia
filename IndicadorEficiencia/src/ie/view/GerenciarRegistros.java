@@ -61,9 +61,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
 
 //Metodo Pesquisar Registros
     public void PesquisarRegistros() {
-
+        
         String pesquisa = "%" + txt_pesquisa.getText() + "%";
-
+        
         IndicadorDAO dao = new IndicadorDAO();
         List<Indicador> lista = dao.pesquisarIndicador(pesquisa);
         DefaultTableModel dados = (DefaultTableModel) jT_registros.getModel();
@@ -81,9 +81,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                 c.getData(),
                 c.getCriado(),
                 c.getModificado()});
-
+            
         }
-
+        jL_countLine.setText(" "+lista.size());
     }
 
     //Metodo Abrir Alterar Registros
@@ -94,9 +94,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                     Frame parent = (Frame) SwingUtilities.getWindowAncestor(jT_registros);
                     AplicarBlur(true);
                     AlterarRegistro dialog = new AlterarRegistro(parent, true);
-
+                    
                     int selectedRow = jT_registros.getSelectedRow();
-
+                    
                     dialog.AlterarVariaveis(
                             jT_registros.getValueAt(selectedRow, 0).toString(),
                             jT_registros.getValueAt(selectedRow, 2).toString(),
@@ -106,7 +106,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                             jT_registros.getValueAt(selectedRow, 7).toString(),
                             jT_registros.getValueAt(selectedRow, 8).toString()
                     );
-
+                    
                     dialog.setVisible(true);
                     AplicarBlur(false);
                 }
@@ -136,11 +136,11 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             blurPane.repaint(); // Atualiza a tela
         }
     }
-
+    
     public GerenciarRegistros() {
         initComponents();
         AbrirAlterarRegistro();
-
+        
     }
 
     /**
@@ -152,12 +152,14 @@ public class GerenciarRegistros extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rectanglePainter1 = new org.jdesktop.swingx.painter.RectanglePainter();
         jScrollPane1 = new javax.swing.JScrollPane();
         jT_registros = new javax.swing.JTable();
         txt_pesquisa = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btn_cancelaPesquisa = new javax.swing.JLabel();
+        jL_countLine = new javax.swing.JLabel();
 
         jT_registros.setAutoCreateRowSorter(true);
         jT_registros.setModel(new javax.swing.table.DefaultTableModel(
@@ -267,6 +269,9 @@ public class GerenciarRegistros extends javax.swing.JPanel {
             }
         });
 
+        jL_countLine.setText(" 000000");
+        jL_countLine.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,7 +280,8 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addComponent(jL_countLine, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_cancelaPesquisa)
@@ -294,7 +300,8 @@ public class GerenciarRegistros extends javax.swing.JPanel {
                     .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(btn_cancelaPesquisa))
+                    .addComponent(btn_cancelaPesquisa)
+                    .addComponent(jL_countLine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
@@ -302,39 +309,39 @@ public class GerenciarRegistros extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-
+        
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_sat.png")));
 
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
-
+        
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/adicionar32_orig.png")));
 
     }//GEN-LAST:event_jLabel1MouseExited
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-
+        
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/pdf32_sat.png")));
 
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-
+        
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/pdf32_orig.png")));
 
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-
+        
         AplicarBlur(true);
-
+        
         Frame parent = (Frame) SwingUtilities.getWindowAncestor(this);
         NovoRegistro dialog = new NovoRegistro(parent, true);
         dialog.setVisible(true);
-
+        
         AplicarBlur(false);
-
+        
 
     }//GEN-LAST:event_jLabel1MouseClicked
 
@@ -349,19 +356,19 @@ public class GerenciarRegistros extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_pesquisaKeyReleased
 
     private void btn_cancelaPesquisaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseEntered
-
+        
         btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_sat.png")));
 
     }//GEN-LAST:event_btn_cancelaPesquisaMouseEntered
 
     private void btn_cancelaPesquisaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseExited
-
+        
         btn_cancelaPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ie/img/cancelar24_orig.png")));
 
     }//GEN-LAST:event_btn_cancelaPesquisaMouseExited
 
     private void btn_cancelaPesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cancelaPesquisaMouseClicked
-
+        
         if (btn_cancelaPesquisa.isEnabled()) {
             txt_pesquisa.setText("");
             PesquisarRegistros();
@@ -370,7 +377,7 @@ public class GerenciarRegistros extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_cancelaPesquisaMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-
+        
         Utilitarios utl = new Utilitarios();
         try {
             utl.gerarPDF(jT_registros, "TB_Registro de Apontamentos.pdf", Arrays.asList("Designer", "Pedido", "NºArtes", "Status", "Cliente",
@@ -384,19 +391,21 @@ public class GerenciarRegistros extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void txt_pesquisaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyTyped
-
-      char keyChar = evt.getKeyChar();
-    evt.setKeyChar(Character.toUpperCase(keyChar));
+        
+        char keyChar = evt.getKeyChar();
+        evt.setKeyChar(Character.toUpperCase(keyChar));
 
     }//GEN-LAST:event_txt_pesquisaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_cancelaPesquisa;
+    private javax.swing.JLabel jL_countLine;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jT_registros;
+    private org.jdesktop.swingx.painter.RectanglePainter rectanglePainter1;
     private javax.swing.JTextField txt_pesquisa;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="org.jdesktop.swingx.painter.RectanglePainter" name="rectanglePainter1">
+    </Component>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -20,7 +24,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="jL_countLine" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txt_pesquisa" min="-2" pref="285" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_cancelaPesquisa" min="-2" max="-2" attributes="0"/>
@@ -44,6 +49,7 @@
                   <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_cancelaPesquisa" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jL_countLine" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="354" max="32767" attributes="0"/>
@@ -195,6 +201,12 @@
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_cancelaPesquisaMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_cancelaPesquisaMouseExited"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jL_countLine">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" 000000"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

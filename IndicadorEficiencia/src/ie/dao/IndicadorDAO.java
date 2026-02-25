@@ -239,4 +239,105 @@ public class IndicadorDAO {
         return resultado;
     }
 
+//Metodo ListarResumo
+    public List<Indicador> ListarResumo(String ano) {
+
+        try {
+
+            // Passo 1 criar a lista
+            List<Indicador> lista = new ArrayList<>();
+
+            // Passo 2 criar o comando sql, organizar e executar
+            String sql = "SELECT f.nome AS Designer,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 1 THEN i.qtd_artes ELSE 0 END) AS Jan,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 2 THEN i.qtd_artes ELSE 0 END) AS Fev,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 3 THEN i.qtd_artes ELSE 0 END) AS Mar,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 4 THEN i.qtd_artes ELSE 0 END) AS Abr,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 5 THEN i.qtd_artes ELSE 0 END) AS Mai,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 6 THEN i.qtd_artes ELSE 0 END) AS Jun,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 7 THEN i.qtd_artes ELSE 0 END) AS Jul,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 8 THEN i.qtd_artes ELSE 0 END) AS Ago,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 9 THEN i.qtd_artes ELSE 0 END) AS `Set`,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 10 THEN i.qtd_artes ELSE 0 END) AS `Out`,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 11 THEN i.qtd_artes ELSE 0 END) AS Nov,\n"
+                    + "    SUM(CASE WHEN MONTH(i.data) = 12 THEN i.qtd_artes ELSE 0 END) AS Dez,\n"
+                    + "    ROUND(SUM(i.qtd_artes) / 12, 2) AS Media,\n"
+                    + "    SUM(i.qtd_artes) AS Total\n"
+                    + "FROM indicadorEficiencia.indicador i\n"
+                    + "JOIN indicadorEficiencia.funcionario f \n"
+                    + "    ON i.id_funcionario = f.id_funcionario\n"
+                    + "WHERE YEAR(i.data) = ?\n"
+                    + "GROUP BY f.nome\n"
+                    + "ORDER BY f.nome;";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, ano);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Indicador obj = new Indicador();
+
+                obj.setDesigner(rs.getString("Designer"));
+                obj.setJan(rs.getInt("Jan"));
+                obj.setFev(rs.getInt("Fev"));
+                obj.setMar(rs.getInt("Mar"));
+                obj.setAbr(rs.getInt("Abr"));
+                obj.setMai(rs.getInt("Mai"));
+                obj.setJun(rs.getInt("Jun"));
+                obj.setJul(rs.getInt("Jul"));
+                obj.setAgo(rs.getInt("Ago"));
+                obj.setSet(rs.getInt("Set"));
+                obj.setOut(rs.getInt("Out"));
+                obj.setNov(rs.getInt("Nov"));
+                obj.setDez(rs.getInt("Dez"));
+                obj.setMedia(rs.getFloat("Media"));
+                obj.setTotal(rs.getInt("Total"));
+
+                lista.add(obj);
+
+            }
+            con.close();
+            return lista;
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro:" + erro);
+            return null;
+        }
+
+    }
+
+//Metodo ListarAnos
+    public List<Indicador> ListarAnos() {
+
+        try {
+
+            // Passo 1 criar a lista
+            List<Indicador> lista = new ArrayList<>();
+
+            // Passo 2 criar o comando sql, organizar e executar
+            String sql = "SELECT DISTINCT YEAR(criado) AS Ano\n"
+                    + "FROM indicadorEficiencia.indicador\n"
+                    + "ORDER BY Ano DESC;";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Indicador obj = new Indicador();
+
+                obj.setAno(rs.getString("ano"));
+
+                lista.add(obj);
+
+            }
+            con.close();
+            return lista;
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro:" + erro);
+            return null;
+        }
+
+    }
+
 }
