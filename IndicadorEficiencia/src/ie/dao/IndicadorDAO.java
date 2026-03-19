@@ -261,7 +261,7 @@ public class IndicadorDAO {
                     + "    SUM(CASE WHEN MONTH(i.data) = 10 THEN i.qtd_artes ELSE 0 END) AS `Out`,\n"
                     + "    SUM(CASE WHEN MONTH(i.data) = 11 THEN i.qtd_artes ELSE 0 END) AS Nov,\n"
                     + "    SUM(CASE WHEN MONTH(i.data) = 12 THEN i.qtd_artes ELSE 0 END) AS Dez,\n"
-                    + "    ROUND(SUM(i.qtd_artes) / 12, 2) AS Media,\n"
+                    + "    ROUND(SUM(i.qtd_artes) / COUNT(DISTINCT MONTH(i.data)), 2) AS Media,\n"
                     + "    SUM(i.qtd_artes) AS Total\n"
                     + "FROM indicadorEficiencia.indicador i\n"
                     + "JOIN indicadorEficiencia.funcionario f \n"
