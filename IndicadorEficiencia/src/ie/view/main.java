@@ -410,7 +410,7 @@ public class main extends javax.swing.JFrame {
         gerenciarFuncionario1.listarFuncionarios();
         gerenciarRegistros1.PesquisarRegistros();
         resumo1.AtualizarAnos();
-        resumo1.listarResumo();
+        resumo1.AtualizarResumo();
 
     }//GEN-LAST:event_formWindowActivated
 

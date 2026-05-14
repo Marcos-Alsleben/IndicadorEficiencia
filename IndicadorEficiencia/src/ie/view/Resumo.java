@@ -7,6 +7,8 @@ package ie.view;
 import ie.dao.IndicadorDAO;
 import ie.model.Indicador;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,23 +18,32 @@ import javax.swing.table.DefaultTableModel;
 public class Resumo extends javax.swing.JPanel {
 
 //Metodo AtualizarAnos
-    public void AtualizarAnos() {
+    public void AtualizarAnosComboBox(JComboBox<String> combobox) {
         IndicadorDAO dao = new IndicadorDAO();
         List<Indicador> lista = dao.ListarAnos();
-
-        cb_ano.removeAllItems();
+        
+        combobox.removeAllItems();
         //cb_ano.addItem("*");
 
         for (Indicador c : lista) {
-            cb_ano.addItem(c.getAno());
-
+            combobox.addItem(c.getAno());
+            
         }
     }
 
-public void listarResumo() {
+//Metodo AtualizarAnos
+    public void AtualizarAnos() {
+        
+        AtualizarAnosComboBox(cb_ano);
+        AtualizarAnosComboBox(cb_ano2);
+        
+    }
+
+//Metodo Atualizar tabela
+    public void listarResumo(JComboBox<String> combobox, JTable tabela) {
         IndicadorDAO dao = new IndicadorDAO();
-        List<Indicador> lista = dao.ListarResumo(cb_ano.getSelectedItem().toString());
-        DefaultTableModel dados = (DefaultTableModel) jT_resumo.getModel();
+        List<Indicador> lista = dao.ListarResumo(combobox.getSelectedItem().toString());
+        DefaultTableModel dados = (DefaultTableModel) tabela.getModel();
         dados.setNumRows(0);
         for (Indicador c : lista) {
             dados.addRow(new Object[]{
@@ -55,9 +66,17 @@ public void listarResumo() {
         }
     }
 
+//Metodo Atualizar Resumo
+    public void AtualizarResumo() {
+        
+        listarResumo(cb_ano, jT_resumo);
+        listarResumo(cb_ano2, jT_resumo2);
+        cb_ano2.setSelectedIndex(1);
+    }
+    
     public Resumo() {
         initComponents();
-
+        
     }
 
     /**
@@ -74,6 +93,10 @@ public void listarResumo() {
         jT_resumo = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         cb_ano = new javax.swing.JComboBox<>();
+        cb_ano2 = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jT_resumo2 = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jT_resumo.setAutoCreateRowSorter(true);
         jT_resumo.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,6 +171,76 @@ public void listarResumo() {
             }
         });
 
+        cb_ano2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ano" }));
+        cb_ano2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_ano2ItemStateChanged(evt);
+            }
+        });
+
+        jT_resumo2.setAutoCreateRowSorter(true);
+        jT_resumo2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Designer", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Média", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jT_resumo2.setToolTipText("");
+        jT_resumo2.setFocusable(false);
+        jScrollPane2.setViewportView(jT_resumo2);
+        if (jT_resumo2.getColumnModel().getColumnCount() > 0) {
+            jT_resumo2.getColumnModel().getColumn(0).setMinWidth(130);
+            jT_resumo2.getColumnModel().getColumn(0).setPreferredWidth(130);
+            jT_resumo2.getColumnModel().getColumn(1).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(1).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(2).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(2).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(3).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(3).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(4).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(4).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(5).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(5).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(6).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(6).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(7).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(7).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(8).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(8).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(9).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(9).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(10).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(10).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(11).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(11).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(12).setMinWidth(30);
+            jT_resumo2.getColumnModel().getColumn(12).setPreferredWidth(30);
+            jT_resumo2.getColumnModel().getColumn(13).setMinWidth(50);
+            jT_resumo2.getColumnModel().getColumn(13).setPreferredWidth(50);
+            jT_resumo2.getColumnModel().getColumn(14).setMinWidth(50);
+            jT_resumo2.getColumnModel().getColumn(14).setPreferredWidth(50);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,37 +252,59 @@ public void listarResumo() {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cb_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cb_ano2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(cb_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_ano2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb_anoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_anoItemStateChanged
-
+        
         if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-
-            listarResumo();
+            
+            listarResumo(cb_ano, jT_resumo);
         }
 
     }//GEN-LAST:event_cb_anoItemStateChanged
 
+    private void cb_ano2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_ano2ItemStateChanged
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            
+            listarResumo(cb_ano2, jT_resumo2);
+        }
+    }//GEN-LAST:event_cb_ano2ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_ano;
+    private javax.swing.JComboBox<String> cb_ano2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jT_resumo;
+    private javax.swing.JTable jT_resumo2;
     private org.jdesktop.swingx.painter.RectanglePainter rectanglePainter1;
     // End of variables declaration//GEN-END:variables
 }
